@@ -2,9 +2,8 @@ import os
 from bs4 import BeautifulSoup as BS
 
 
-def findLinks():
-    # This code assumes that all html pages it will be evaluating are in this directory.
-    location = r'\\southw-sfps-01.business.mpls.k12.mn.us\Students_A-L\tlin2001\Desktop\PageRank_Pages'
+def findLinks(location):
+    # This code assumes that all html pages it will be evaluating are in the location directory.
 
     # Finds the names of the html pages in the location folder, stores in htmlPageNames.
     htmlPageNames = []
@@ -31,7 +30,7 @@ def findLinks():
         soup = BS(data, "html.parser")
         hrefTags = soup.find_all(href=True)
         for thing in hrefTags:
-            
+
             links[name].append(thing['href'])
 
     # Changes outgoing links into numbers so that the PageRank algorithm can use them as a matrix.
@@ -39,6 +38,10 @@ def findLinks():
     for key in links:
         linkNums[htmlPageNames.index(key)] = []
         for item in links[key]:
-            linkNums[htmlPageNames.index(key)].append(htmlPageNames.index(item))
+            try:
+                linkNums[htmlPageNames.index(key)].append(htmlPageNames.index(item))
+            except:
+                pass
 
-    return linkNums
+    return linkNums, htmlPageNames
+
