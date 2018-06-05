@@ -7,6 +7,15 @@ import webbrowser
 # Based on this validation function:
 # https://stackoverflow.com/questions/21205924/restricting-the-value-in-tkinter-entry-widget-why-cant-i-delete-the-first-char
 
+# NOTE: On apple computers this has an annoying but unimportant warning when selecting html files:
+# objc[4730]: Class FIFinderSyncExtensionHost is implemented in both
+# /System/Library/PrivateFrameworks/FinderKit.framework/FinderKit (0x119dd4a70) and
+# /System/Library/PrivateFrameworks/FileProvider.framework/OverrideBundles/FinderSyncCollaborationFileProviderOverride.
+# bundle/Contents/MacOS/FinderSyncCollaborationFileProviderOverride (0x120280cd8). One of the two will be used.
+# Which one is undefined.
+# As far as I can tell, this is an issue with apple that does not affect the code:
+# https://github.com/jarvisteach/appJar/issues/285
+
 currentFile = r'\\southw-sfps-01.business.mpls.k12.mn.us\Students_A-L\tlin2001\Desktop\PageRank_Pages'
 
 
